@@ -1,0 +1,20 @@
+version: "2.1"
+services:
+  code-server:
+    image: codercom/code-server:latest
+    container_name: code-server
+    user: root
+    environment:
+      - PASSWORD=password #optional
+      - HASHED_PASSWORD= #optional
+      - SUDO_PASSWORD=password #optional
+      - SUDO_PASSWORD_HASH= #optional
+    volumes:
+      - ~/vscode/.config:/config
+      - ~/vscode/project:/home/coder/project
+    ports:
+      - 8000:8080
+      - 8001:8001
+      - 8002:8002
+      - 9000:9000
+    restart: unless-stopped
